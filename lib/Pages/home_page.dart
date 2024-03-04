@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             children: [
               // Background image
               Container(
-                height: MediaQuery.of(context).size.height * 3 / 4,
+                height: MediaQuery.of(context).size.height * 2.5 / 4,
                 decoration: const BoxDecoration(
                   image: DecorationImage(image: AssetImage('assets/images/house.jpeg'),fit: BoxFit.cover,),
 
@@ -52,10 +52,10 @@ class HomePage extends StatelessWidget {
 
             ],
           ),
-          SizedBox(height: 25,),
+          SizedBox(height: 15,),
           Text("YOUR DREAM SPACE", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),textAlign:TextAlign.center ),
           SizedBox(height: 25,),
-          Text("Find your perfect dream space with just few clics!"),
+          Text("Find your perfect dream space with just few clics!", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
           SizedBox(height: 25,),
 
           ElevatedButton(onPressed: () {
