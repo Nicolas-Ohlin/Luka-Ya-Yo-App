@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+
         children: [
           Stack(
             children: [
@@ -52,15 +53,26 @@ class HomePage extends StatelessWidget {
 
             ],
           ),
-          SizedBox(height: 15,),
-          Text("YOUR DREAM SPACE", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),textAlign:TextAlign.center ),
-          SizedBox(height: 25,),
-          Text("Find your perfect dream space with just few clics!", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
-          SizedBox(height: 25,),
+          const SizedBox(height: 15,),
+          const Text("YOUR DREAM SPACE", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),textAlign:TextAlign.center ),
+          const SizedBox(height: 25,),
+          const Text("Find your perfect dream space with just few clics!", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
 
-          ElevatedButton(onPressed: () {
 
-          }, child: Text("LOOK AT"),)
+          Padding(
+            padding: const EdgeInsets.all(100.0),
+            child: ElevatedButton(onPressed: () {
+
+            },style:  ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueAccent,
+
+              fixedSize: const Size(200, 50),
+              padding: const EdgeInsets.all(16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ), child: const Text("LOOK AT", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 16),),),
+          )
         ],
       ),
 
