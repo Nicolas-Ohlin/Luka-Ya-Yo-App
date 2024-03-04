@@ -27,25 +27,22 @@ class HomePage extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: 500, // Height of the gradient
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 0.0,sigmaY: 0.0),
+                height: 550, // Height of the gradient
                   child: Container(
-
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-
                           Colors.transparent,
                           Colors.white,
+
                         ],
                       ),
                     ),
                   ),
 
-                ),
+
               ),
 
 
