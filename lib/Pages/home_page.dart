@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: 550, // Height of the gradient
+                height: 600, // Height of the gradient
                   child: Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
                           Colors.transparent,
                           Colors.white,
 
+
                         ],
+                        stops: [0.00, 0.99],
                       ),
                     ),
                   ),
