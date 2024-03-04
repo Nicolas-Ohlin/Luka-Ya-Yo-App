@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: 100, // Height of the gradient
+                height: 500, // Height of the gradient
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 0.0,sigmaY: 0.0),
                   child: Container(
