@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:contacts_exos/Constants/constants.dart';
 import 'package:contacts_exos/Pages/page_principale.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Constants.violetIris,
                   fixedSize: const Size(200, 50),
                   padding: const EdgeInsets.all(16),
                   shape: RoundedRectangleBorder(
