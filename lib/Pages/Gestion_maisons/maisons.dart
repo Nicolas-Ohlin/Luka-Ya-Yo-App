@@ -1,5 +1,6 @@
 import 'package:contacts_exos/Constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class Tous extends StatefulWidget {
   const Tous({super.key});
@@ -9,6 +10,18 @@ class Tous extends StatefulWidget {
 }
 
 class _TousState extends State<Tous> {
+  // https://api.npoint.io/594385773d3cf59c5ecd
+  final String npointUrl = 'https://api.npoint.io/594385773d3cf59c5ecd';
+  Future<void> fetchData() async {
+    try {
+      final response = await Dio().get(npointUrl);
+      final data = response.data;
+      print(data);
+    } catch (e) {
+      print('Erreur lors de la recuperation des données : $e');
+    }
+  }
+
   var listMaison = [
     {
       "picture": "",
@@ -41,26 +54,30 @@ class _TousState extends State<Tous> {
       "prix": "300\$",
     },
   ];
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-          itemCount: listMaison.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Single_maison(
-                maison_pict: listMaison[index]['picture'],
-                maison_salle: listMaison[index]['salles'],
-                maison_prix: listMaison[index]['prix'],
-              ),
-            );
-          }),
-    );
+    return GridView.builder(
+        itemCount: listMaison.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: 240,
+        ),
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Single_maison(
+              maison_pict: listMaison[index]['picture'],
+              maison_salle: listMaison[index]['salles'],
+              maison_prix: listMaison[index]['prix'],
+            ),
+          );
+        });
   }
 }
 
