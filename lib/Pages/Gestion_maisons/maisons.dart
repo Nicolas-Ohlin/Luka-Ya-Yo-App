@@ -1,4 +1,5 @@
 import 'package:contacts_exos/Constants/constants.dart';
+import 'package:contacts_exos/Pages/Gestion_maisons/affiche_maison.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -39,27 +40,28 @@ class _TousState extends State<Tous> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: data.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: 240,
-          crossAxisSpacing: 7,
-          mainAxisSpacing: 7,
-        ),
-        itemBuilder: (context, index) {
-          return isLoading
-              ? CircularProgressIndicator(
-                  color: Colors.deepPurpleAccent,
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Single_maison(
-                    maison_pict: data[index]['picture'],
-                    maison_salle: data[index]['salles'],
-                    maison_prix: data[index]['prix'],
-                  ),
-                );
-        });
+      itemCount: data.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisExtent: 240,
+        crossAxisSpacing: 7,
+        mainAxisSpacing: 7,
+      ),
+      itemBuilder: (context, index) {
+        return isLoading
+            ? const CircularProgressIndicator(
+                color: Colors.deepPurpleAccent,
+              )
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Single_maison(
+                  maison_pict: data[index]['picture'],
+                  maison_salle: data[index]['salles'],
+                  maison_prix: data[index]['prix'],
+                ),
+              );
+      },
+    );
   }
 }
 
@@ -81,81 +83,95 @@ class Single_maison extends StatefulWidget {
 class _Single_maisonState extends State<Single_maison> {
   @override
   Widget build(BuildContext context) {
-    double height =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    return GridTile(
-      footer: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(17),
-            topLeft: Radius.circular(17),
-          ),
-          color: Colors.white60,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.maison_salle,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(80, 86, 196, 1.0),
-                ),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => affiche_maison(
+                maison_pict: widget.maison_pict,
+                maison_salle: widget.maison_salle,
+                maison_prix: widget.maison_prix,
               ),
-              Text(
-                widget.maison_prix,
-                style: TextStyle(
-                  color: Constants.violetIris,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+            ),
+          );
+        });
+      },
+      child: GridTile(
+        footer: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(17),
+              topLeft: Radius.circular(17),
+            ),
+            color: Colors.white60,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.maison_salle,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(80, 86, 196, 1.0),
+                  ),
                 ),
-              ),
-            ],
+                Text(
+                  widget.maison_prix,
+                  style: TextStyle(
+                    color: Constants.violetIris,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Constants.violetIris,
-            width: 1,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: Constants.violetIris,
+              width: 1,
+            ),
           ),
-        ),
-        child: Image.network(
-          widget.maison_pict,
-          fit: BoxFit.cover,
-          loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent? loadingProgress) {
-            if (loadingProgress == null) {
-              return child;
-            } else {
+          child: Image.network(
+            widget.maison_pict,
+            fit: BoxFit.cover,
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.deepPurpleAccent,
+                  ),
+                );
+              }
+            },
+            errorBuilder: (BuildContext context, Object exception,
+                StackTrace? stackTrace) {
               return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.deepPurpleAccent,
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    "Problème de connexion ou image non disponible!",
+                    style: TextStyle(
+                      color: Colors.deepPurpleAccent,
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               );
-            }
-          },
-          errorBuilder:
-              (BuildContext context, Object exception, StackTrace? stackTrace) {
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  "Problème de connexion ou image non disponible!",
-                  style: TextStyle(
-                    color: Colors.deepPurpleAccent,
-                    fontSize: 12,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            );
-          },
+            },
+          ),
         ),
       ),
     );
