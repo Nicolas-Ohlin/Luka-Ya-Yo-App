@@ -83,7 +83,7 @@ class _AccueilState extends State<Accueil> {
                           return GestureDetector(
                             onTap: () {
                               setState(() {
-                                current == index;
+                                current = index;
                               });
                             },
                             child: Padding(
