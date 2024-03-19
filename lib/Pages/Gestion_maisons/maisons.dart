@@ -1,5 +1,6 @@
 import 'package:contacts_exos/Constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/painting/image_stream.dart';
 import 'package:dio/dio.dart';
 
 class Tous extends StatefulWidget {
@@ -11,49 +12,22 @@ class Tous extends StatefulWidget {
 
 class _TousState extends State<Tous> {
   // https://api.npoint.io/594385773d3cf59c5ecd
-  final String npointUrl = 'https://api.npoint.io/594385773d3cf59c5ecd';
+  final String npointUrl = "https://api.npoint.io/5ea27ea97ea815403593";
+  List<Map<String, dynamic>> data = [];
   Future<void> fetchData() async {
     try {
       final response = await Dio().get(npointUrl);
-      final data = response.data;
-      print(data);
+      final jsonData = response.data;
+      if (jsonData is List) {
+        setState(() {
+          data = jsonData.cast<Map<String, dynamic>>();
+        });
+      }
     } catch (e) {
       print('Erreur lors de la recuperation des données : $e');
     }
   }
 
-  var listMaison = [
-    {
-      "picture": "",
-      "salles": "1/2/2",
-      "prix": "150\$",
-    },
-    {
-      "picture": "",
-      "salles": "1/1/2",
-      "prix": "310\$",
-    },
-    {
-      "picture": "",
-      "salles": "1/1/1",
-      "prix": "100\$",
-    },
-    {
-      "picture": "",
-      "salles": "1/1/3",
-      "prix": "250\$",
-    },
-    {
-      "picture": "",
-      "salles": "1/2/5",
-      "prix": "450\$",
-    },
-    {
-      "picture": "",
-      "salles": "1/2/4",
-      "prix": "300\$",
-    },
-  ];
   @override
   void initState() {
     super.initState();
@@ -63,7 +37,7 @@ class _TousState extends State<Tous> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: listMaison.length,
+        itemCount: data.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisExtent: 240,
@@ -72,9 +46,9 @@ class _TousState extends State<Tous> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Single_maison(
-              maison_pict: listMaison[index]['picture'],
-              maison_salle: listMaison[index]['salles'],
-              maison_prix: listMaison[index]['prix'],
+              maison_pict: data[index]['picture'],
+              maison_salle: data[index]['salles'],
+              maison_prix: data[index]['prix'],
             ),
           );
         });
@@ -100,10 +74,6 @@ class _Single_maisonState extends State<Single_maison> {
   @override
   Widget build(BuildContext context) {
     return GridTile(
-      child: Image.asset(
-        widget.maison_pict,
-        fit: BoxFit.cover,
-      ),
       footer: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
@@ -126,6 +96,28 @@ class _Single_maisonState extends State<Single_maison> {
             ),
           ],
         ),
+      ),
+      child: Image.network(
+        widget.maison_pict,
+        fit: BoxFit.cover,
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return Placeholder(
+            fallbackWidth: 200,
+            fallbackHeight: 100,
+            strokeWidth: 2,
+            color: Colors.white,
+          );
+        },
       ),
     );
   }

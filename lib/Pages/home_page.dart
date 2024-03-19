@@ -9,6 +9,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
               children: [
                 // Background image
                 Container(
-                  height: MediaQuery.of(context).size.height * 2.5 / 4,
+                  height: height * 2.5 / 4,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/house.jpeg'),
