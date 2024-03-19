@@ -1,6 +1,5 @@
 import 'package:contacts_exos/Constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/painting/image_stream.dart';
 import 'package:dio/dio.dart';
 
 class Tous extends StatefulWidget {
@@ -14,13 +13,16 @@ class _TousState extends State<Tous> {
   // https://api.npoint.io/594385773d3cf59c5ecd
   final String npointUrl = "https://api.npoint.io/5ea27ea97ea815403593";
   List<Map<String, dynamic>> data = [];
+  bool isLoading = false;
   Future<void> fetchData() async {
+    isLoading = true;
     try {
       final response = await Dio().get(npointUrl);
       final jsonData = response.data;
       if (jsonData is List) {
         setState(() {
           data = jsonData.cast<Map<String, dynamic>>();
+          isLoading = false;
         });
       }
     } catch (e) {
@@ -41,16 +43,22 @@ class _TousState extends State<Tous> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisExtent: 240,
+          crossAxisSpacing: 7,
+          mainAxisSpacing: 7,
         ),
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Single_maison(
-              maison_pict: data[index]['picture'],
-              maison_salle: data[index]['salles'],
-              maison_prix: data[index]['prix'],
-            ),
-          );
+          return isLoading
+              ? CircularProgressIndicator(
+                  color: Colors.deepPurpleAccent,
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Single_maison(
+                    maison_pict: data[index]['picture'],
+                    maison_salle: data[index]['salles'],
+                    maison_prix: data[index]['prix'],
+                  ),
+                );
         });
   }
 }
@@ -73,51 +81,82 @@ class Single_maison extends StatefulWidget {
 class _Single_maisonState extends State<Single_maison> {
   @override
   Widget build(BuildContext context) {
+    double height =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return GridTile(
-      footer: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.maison_salle,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+      footer: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(17),
+            topLeft: Radius.circular(17),
+          ),
+          color: Colors.white60,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.maison_salle,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(80, 86, 196, 1.0),
+                ),
               ),
-            ),
-            Text(
-              widget.maison_prix,
-              style: TextStyle(
-                color: Constants.violetIris,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+              Text(
+                widget.maison_prix,
+                style: TextStyle(
+                  color: Constants.violetIris,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      child: Image.network(
-        widget.maison_pict,
-        fit: BoxFit.cover,
-        loadingBuilder: (BuildContext context, Widget child,
-            ImageChunkEvent? loadingProgress) {
-          if (loadingProgress == null) {
-            return child;
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-        errorBuilder:
-            (BuildContext context, Object exception, StackTrace? stackTrace) {
-          return Placeholder(
-            fallbackWidth: 200,
-            fallbackHeight: 100,
-            strokeWidth: 2,
-            color: Colors.white,
-          );
-        },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Constants.violetIris,
+            width: 1,
+          ),
+        ),
+        child: Image.network(
+          widget.maison_pict,
+          fit: BoxFit.cover,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent? loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.deepPurpleAccent,
+                ),
+              );
+            }
+          },
+          errorBuilder:
+              (BuildContext context, Object exception, StackTrace? stackTrace) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Problème de connexion ou image non disponible!",
+                  style: TextStyle(
+                    color: Colors.deepPurpleAccent,
+                    fontSize: 12,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -133,7 +172,7 @@ class Studios extends StatefulWidget {
 class _StudiosState extends State<Studios> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container();
   }
 }
 
@@ -147,6 +186,6 @@ class Cloture extends StatefulWidget {
 class _ClotureState extends State<Cloture> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container();
   }
 }
