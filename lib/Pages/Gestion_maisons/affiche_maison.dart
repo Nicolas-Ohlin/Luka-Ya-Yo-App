@@ -30,45 +30,45 @@ class _affiche_maisonState extends State<affiche_maison> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Container(
-              height: height * 0.34,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                ),
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
               ),
-              child: Image.network(
-                widget.maison_pict,
-                fit: BoxFit.cover,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else {
+              child: Container(
+                height: height * 0.34,
+                child: Image.network(
+                  widget.maison_pict,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.deepPurpleAccent,
+                        ),
+                      );
+                    }
+                  },
+                  errorBuilder: (BuildContext context, Object exception,
+                      StackTrace? stackTrace) {
                     return const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.deepPurpleAccent,
+                      child: Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Text(
+                          "Problème de connexion ou image non disponible!",
+                          style: TextStyle(
+                            color: Colors.deepPurpleAccent,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     );
-                  }
-                },
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  return const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text(
-                        "Problème de connexion ou image non disponible!",
-                        style: TextStyle(
-                          color: Colors.deepPurpleAccent,
-                          fontSize: 16,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  );
-                },
+                  },
+                ),
               ),
             ),
             SizedBox(

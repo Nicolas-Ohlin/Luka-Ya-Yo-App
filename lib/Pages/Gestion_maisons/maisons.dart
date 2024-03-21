@@ -85,59 +85,55 @@ class _Single_maisonState extends State<Single_maison> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => affiche_maison(
-                maison_pict: widget.maison_pict,
-                maison_salle: widget.maison_salle,
-                maison_prix: widget.maison_prix,
+        setState(
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => affiche_maison(
+                  maison_pict: widget.maison_pict,
+                  maison_salle: widget.maison_salle,
+                  maison_prix: widget.maison_prix,
+                ),
               ),
-            ),
-          );
-        });
+            );
+          },
+        );
       },
-      child: GridTile(
-        footer: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(17),
-              topLeft: Radius.circular(17),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: GridTile(
+          footer: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(17),
+                topLeft: Radius.circular(17),
+              ),
+              color: Colors.white70,
             ),
-            color: Colors.white60,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.maison_salle,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(80, 86, 196, 1.0),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.maison_salle,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(80, 86, 196, 1.0),
+                    ),
                   ),
-                ),
-                Text(
-                  widget.maison_prix,
-                  style: TextStyle(
-                    color: Constants.violetIris,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                  Text(
+                    widget.maison_prix,
+                    style: TextStyle(
+                      color: Constants.violetIris,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: Constants.violetIris,
-              width: 1,
+                ],
+              ),
             ),
           ),
           child: Image.network(
