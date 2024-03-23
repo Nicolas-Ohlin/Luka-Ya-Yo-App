@@ -15,18 +15,24 @@ class _TousState extends State<Tous> {
   final String npointUrl = "https://api.npoint.io/5ea27ea97ea815403593";
   List<Map<String, dynamic>> data = [];
   bool isLoading = false;
+  bool isConnected = true;
   Future<void> fetchData() async {
-    isLoading = true;
     try {
       final response = await Dio().get(npointUrl);
       final jsonData = response.data;
       if (jsonData is List) {
         setState(() {
+          isLoading = true;
           data = jsonData.cast<Map<String, dynamic>>();
+          isConnected = true;
           isLoading = false;
         });
       }
     } catch (e) {
+      setState(() {
+        isConnected = false;
+      });
+
       print('Erreur lors de la recuperation des données : $e');
     }
   }
@@ -39,29 +45,40 @@ class _TousState extends State<Tous> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: data.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisExtent: 240,
-        crossAxisSpacing: 7,
-        mainAxisSpacing: 7,
-      ),
-      itemBuilder: (context, index) {
-        return isLoading
-            ? const CircularProgressIndicator(
-                color: Colors.deepPurpleAccent,
-              )
-            : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Single_maison(
-                  maison_pict: data[index]['picture'],
-                  maison_salle: data[index]['salles'],
-                  maison_prix: data[index]['prix'],
-                ),
-              );
-      },
-    );
+    return isConnected
+        ? GridView.builder(
+            itemCount: data.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisExtent: 240,
+              crossAxisSpacing: 7,
+              mainAxisSpacing: 7,
+            ),
+            itemBuilder: (context, index) {
+              return isLoading
+                  ? const CircularProgressIndicator(
+                      color: Colors.deepPurpleAccent,
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Single_maison(
+                        maison_pict: data[index]['picture'],
+                        maison_salle: data[index]['salles'],
+                        maison_prix: data[index]['prix'],
+                      ),
+                    );
+            },
+          )
+        : Center(
+            child: Text(
+              "Problème de connexion. Veillez vous assurer d'etre connecté à Internet.",
+              style: TextStyle(
+                fontSize: 16,
+                color: Constants.violetIris.withOpacity(0.7),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          );
   }
 }
 

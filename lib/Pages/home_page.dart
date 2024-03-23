@@ -5,7 +5,7 @@ import 'package:contacts_exos/Pages/page_principale.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +48,14 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: height * 0.015,
             ),
             const Text("YOUR DREAM SPACE",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: height * 0.010,
             ),
             const Text(
               "Find your perfect dream space with just few clics!",
