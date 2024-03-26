@@ -3,6 +3,7 @@ import 'dart:ui' show ImageFilter;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'accueil_page.dart';
 import 'page_inscription.dart';
 
 class lessor_or_tenant_Page extends StatelessWidget {
@@ -112,7 +113,7 @@ class lessor_or_tenant_Page extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Inscription(),
+                            builder: (context) => Accueil(),
                           ),
                         );
                       },
