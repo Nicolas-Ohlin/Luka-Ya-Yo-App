@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:contacts_exos/Constants/constants.dart';
-import 'package:contacts_exos/Pages/page_principale.dart';
+
 import 'package:flutter/material.dart';
+
+import 'lessor_or_tenantPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,7 +70,8 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => const pagePrincipale(),
+                      builder: (BuildContext context) =>
+                          lessor_or_tenant_Page(),
                     ),
                   );
                 },
