@@ -1,9 +1,7 @@
 import 'package:contacts_exos/Constants/constants.dart';
 import 'package:contacts_exos/Pages/accueil_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
-import 'package:flutter/widgets.dart';
 
 class affiche_maison extends StatefulWidget {
   final maison_pict;
@@ -237,7 +235,7 @@ class _affiche_maisonState extends State<affiche_maison> {
                       "Visiter",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        fontSize: 20,
                         color: Colors.white,
                       ),
                     ),

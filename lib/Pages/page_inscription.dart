@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:contacts_exos/Pages/bailleur/Home_bailleur.dart';
 import 'package:flutter/material.dart';
 
 import '../Components/MyTextField2.dart';
@@ -13,6 +14,7 @@ class Inscription extends StatelessWidget {
     final mailController = TextEditingController();
     final phoneController = TextEditingController();
     final pwdController = TextEditingController();
+    final confirmPwdController = TextEditingController();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -82,7 +84,7 @@ class Inscription extends StatelessWidget {
                     labelText: "Confirmez le mot de passe",
                     prefixIcon: const Icon(Icons.lock),
                     obscureText: true,
-                    controller: phoneController,
+                    controller: confirmPwdController,
                   ),
                   const SizedBox(
                     height: 15,
@@ -92,7 +94,7 @@ class Inscription extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Inscription(),
+                          builder: (context) => const home_bailleur(),
                         ),
                       );
                     },
