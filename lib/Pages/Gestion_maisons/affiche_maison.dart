@@ -235,7 +235,7 @@ class _affiche_maisonState extends State<affiche_maison> {
                       "Visiter",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        fontSize: 20,
                         color: Colors.white,
                       ),
                     ),
