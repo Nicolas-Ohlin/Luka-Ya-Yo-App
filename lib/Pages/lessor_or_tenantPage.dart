@@ -1,5 +1,6 @@
 import 'dart:ui' show ImageFilter;
 
+import 'package:contacts_exos/Constants/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -70,11 +71,15 @@ class lessor_or_tenant_Page extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         fixedSize: const Size(400, 50),
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: Constants.violetIris,
                       ),
                       child: const Text(
                         'Bailleur',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
 
@@ -94,7 +99,9 @@ class lessor_or_tenant_Page extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
                             'ou',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         Expanded(
@@ -122,11 +129,15 @@ class lessor_or_tenant_Page extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         fixedSize: const Size(400, 50),
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: Constants.violetIris,
                       ),
                       child: const Text(
                         'Locataire',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
 
@@ -134,13 +145,15 @@ class lessor_or_tenant_Page extends StatelessWidget {
                     const SizedBox(height: 50),
                     RichText(
                       text: TextSpan(
-                        text: 'J\'ai déjà un compte/',
+                        text: 'J\'ai déjà un compte /',
                         style: const TextStyle(color: Colors.white),
                         children: [
                           TextSpan(
-                            text: 'Se connecter',
+                            text: ' Se connecter',
                             style: const TextStyle(
-                                color: Colors.blueAccent,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
                                 decoration: TextDecoration.underline),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
