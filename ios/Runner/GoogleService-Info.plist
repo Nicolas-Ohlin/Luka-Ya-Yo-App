@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyArCzYnPgP4nnCVn5Oxl95K9QXCTb3h__4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>598238161370</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.contactsExos</string>
+	<key>PROJECT_ID</key>
+	<string>our-firebase-project-a4e40</string>
+	<key>STORAGE_BUCKET</key>
+	<string>our-firebase-project-a4e40.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:598238161370:ios:f04460322ac40b8ce838e3</string>
+</dict>
+</plist>

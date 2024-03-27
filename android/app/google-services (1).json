@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "706553613571",
+    "project_id": "our-firebase-project-f3346",
+    "storage_bucket": "our-firebase-project-f3346.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706553613571:android:423bfa0a58329979e32d36",
+        "android_client_info": {
+          "package_name": "com.example.contacts_exos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAndb9eUJ9-0rkV9A5chaC8AMXAQA0nEzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

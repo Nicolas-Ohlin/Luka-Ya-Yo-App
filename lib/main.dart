@@ -1,9 +1,12 @@
-import 'package:contacts_exos/Pages/page_principale.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
