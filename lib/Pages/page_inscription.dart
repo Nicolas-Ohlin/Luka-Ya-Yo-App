@@ -13,6 +13,7 @@ class Inscription extends StatelessWidget {
     final mailController = TextEditingController();
     final phoneController = TextEditingController();
     final pwdController = TextEditingController();
+    final confirmPwdController = TextEditingController();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -82,7 +83,7 @@ class Inscription extends StatelessWidget {
                     labelText: "Confirmez le mot de passe",
                     prefixIcon: const Icon(Icons.lock),
                     obscureText: true,
-                    controller: phoneController,
+                    controller: confirmPwdController,
                   ),
                   const SizedBox(
                     height: 15,
