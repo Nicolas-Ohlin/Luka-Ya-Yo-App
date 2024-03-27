@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:contacts_exos/Pages/bailleur/Home_bailleur.dart';
 import 'package:flutter/material.dart';
 
 import '../Components/MyTextField2.dart';
@@ -93,7 +94,7 @@ class Inscription extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Inscription(),
+                          builder: (context) => const home_bailleur(),
                         ),
                       );
                     },
