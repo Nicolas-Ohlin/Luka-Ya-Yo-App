@@ -1,6 +1,16 @@
 # contacts_exos
 
-A new Flutter project.
+Luka Ya Yo ou LY².
+
+c'est un application sipmle de logement pour les nouveaux étudiants d'une université quelconue.
+Il est très difficile pour un nouveau venu dans n'importe quelle université du monde de se trouver
+un bon logement près de sa fac sauf si ce service est fourni par cette dernière. De ce fait Mon collaborateur 
+et moi , nous nous sommes penchés sur cette question et nous vous proposans LY², une application de logement, 
+centrée sur les logements pour étudiants ou Home grace à un systeme permettant de repertorier toutes les maisons
+pour étudiants disponibles aux alentours de l'université de l'étudiant (locataire) utilisateur.
+
+
+
 
 ## Getting Started
 
