@@ -2,7 +2,7 @@
 
 Luka Ya Yo ou LY².
 
-c'est un application sipmle de logement pour les nouveaux étudiants d'une université quelconue.
+c'est un application sipmle de logement pour les nouveaux étudiants d'une université quelconque.
 Il est très difficile pour un nouveau venu dans n'importe quelle université du monde de se trouver
 un bon logement près de sa fac sauf si ce service est fourni par cette dernière. De ce fait Mon collaborateur 
 et moi , nous nous sommes penchés sur cette question et nous vous proposans LY², une application de logement, 
