@@ -53,18 +53,25 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: height * 0.015,
             ),
-            const Text("YOUR DREAM SPACE",
+            const Text("FACILITE-TOI LA VIE!",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
             SizedBox(
               height: height * 0.010,
             ),
-            const Text(
-              "Find your perfect dream space with just few clics!",
-              style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+            Container(
+              width: MediaQuery.of(context).size.width * 1.5 / 2,
+              child: const Center(
+                child: Text(
+                  "Besoins d'une maison de location en tant qu'étudiant? trouve et reserve la maison de ton choix avec LUKA YA YO !",
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.all(100.0),
+              padding: const EdgeInsets.all(50.0),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
