@@ -236,11 +236,12 @@ class _affiche_maisonState extends State<affiche_maison> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: const Text('Réservation'),
-                            content: Column(
+                            content: const Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                const Text(
-                                    'Entrez votre nom pour la réservation :'),
+                                Text(
+                                  'Entrez votre nom pour la réservation :',
+                                ),
                                 TextField(
                                   autofocus: true,
                                 ),
