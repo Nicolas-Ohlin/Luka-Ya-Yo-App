@@ -1,6 +1,7 @@
 import 'dart:ui' show ImageFilter;
 
 import 'package:contacts_exos/Constants/constants.dart';
+import 'package:contacts_exos/Pages/test.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +63,7 @@ class lessor_or_tenant_Page extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Inscription(),
+                            builder: (context) => const Test(),
                           ),
                         );
                       },
