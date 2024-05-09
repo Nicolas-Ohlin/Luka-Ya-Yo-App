@@ -89,25 +89,28 @@ class Inscription extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const home_bailleur(),
+                  Padding(
+                    padding: const EdgeInsets.all(50.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const home_bailleur(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        fixedSize: const Size(417, 60),
+                        backgroundColor: Colors.blueAccent,
                       ),
-                      fixedSize: const Size(417, 60),
-                      backgroundColor: Colors.blueAccent,
-                    ),
-                    child: const Text(
-                      'CREER UN COMPTE',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      child: const Text(
+                        'CREER UN COMPTE',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     ),
                   ),
                 ],

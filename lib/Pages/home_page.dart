@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:contacts_exos/Constants/constants.dart';
 
 import 'package:flutter/material.dart';

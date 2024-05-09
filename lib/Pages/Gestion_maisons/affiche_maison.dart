@@ -230,9 +230,43 @@ class _affiche_maisonState extends State<affiche_maison> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Réservation'),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const Text(
+                                    'Entrez votre nom pour la réservation :'),
+                                TextField(
+                                  autofocus: true,
+                                ),
+                              ],
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('Annuler'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              TextButton(
+                                child: const Text('Réserver'),
+                                onPressed: () {
+                                  // Ajoutez ici le code pour gérer la réservation
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                     child: const Text(
-                      "Visiter",
+                      "Réserver",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
